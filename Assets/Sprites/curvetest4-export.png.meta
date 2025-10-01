@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 28a45b915382d4d4db644b3a199ecac2
+guid: 01ddb110d5ff5a54d908565c91cc778b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7798187541327066252
-    second: curve_0
+      213: -3887215395675047578
+    second: curvetest4-export_0
+  - first:
+      213: 5616696935657219241
+    second: curvetest4-export_1
+  - first:
+      213: 1758846295583665121
+    second: curvetest4-export_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +102,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: curve_0
+      name: curvetest4-export_0
       rect:
         serializedVersion: 2
-        x: 248
-        y: 498
-        width: 400
-        height: 191
+        x: 146
+        y: 127
+        width: 56
+        height: 118
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +121,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c843da4904ab83c60800000000000000
-      internalID: 7798187541327066252
+      spriteID: 669fb576136dd0ac0800000000000000
+      internalID: -3887215395675047578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curvetest4-export_1
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 243
+        width: 23
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a4afdcba1482fd40800000000000000
+      internalID: 5616696935657219241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curvetest4-export_2
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 104
+        width: 121
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1eba6c6136da86810800000000000000
+      internalID: 1758846295583665121
       vertices: []
       indices: 
       edges: []
@@ -148,7 +185,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      curve_0: 7798187541327066252
+      curvetest4-export_0: -3887215395675047578
+      curvetest4-export_1: 5616696935657219241
+      curvetest4-export_2: 1758846295583665121
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

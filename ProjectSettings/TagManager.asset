@@ -7,6 +7,11 @@ TagManager:
   - Bumper
   - Flipper
   - Gravity Well
+  - Launcher
+  - Ball
+  - Bounce
+  - Big Bounce
+  - Knob
   layers:
   - Default
   - TransparentFX

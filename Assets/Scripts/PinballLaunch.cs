@@ -9,10 +9,13 @@ public class PinballLaunch : MonoBehaviour
     float minDist;
 
     [SerializeField]
-    float launchPower;
+    public float launchPower;
 
     [SerializeField]
     PinballBall ballScript;
+
+    [SerializeField]
+    float distanceEachFrame;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,7 +31,7 @@ public class PinballLaunch : MonoBehaviour
         {
             if (mySpring.distance > minDist)
             {
-                mySpring.distance -= 0.01f;
+                mySpring.distance -= distanceEachFrame;
             }
         }
         if (Input.GetKeyUp(KeyCode.Space))

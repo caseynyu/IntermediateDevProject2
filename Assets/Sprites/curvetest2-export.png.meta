@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 28a45b915382d4d4db644b3a199ecac2
+guid: 0f66a8105be264940ae56b902fda7e83
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7798187541327066252
-    second: curve_0
+      213: 6111387460663635594
+    second: curvetest2-export_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: curve_0
+      name: curvetest2-export_0
       rect:
         serializedVersion: 2
-        x: 248
-        y: 498
-        width: 400
-        height: 191
+        x: 147
+        y: 104
+        width: 263
+        height: 144
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c843da4904ab83c60800000000000000
-      internalID: 7798187541327066252
+      spriteID: a8ee1a5148200d450800000000000000
+      internalID: 6111387460663635594
       vertices: []
       indices: 
       edges: []
@@ -148,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      curve_0: 7798187541327066252
+      curvetest2-export_0: 6111387460663635594
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
