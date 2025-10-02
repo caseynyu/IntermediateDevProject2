@@ -4,7 +4,7 @@ using System.Collections;
 public class PinballCamera : MonoBehaviour
 {
     [SerializeField]
-    Transform ballTransform;
+    public Transform ballTransform;
     [SerializeField]
     float smoothVal;
 

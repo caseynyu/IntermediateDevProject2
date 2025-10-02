@@ -12,6 +12,7 @@ TagManager:
   - Bounce
   - Big Bounce
   - Knob
+  - End
   layers:
   - Default
   - TransparentFX

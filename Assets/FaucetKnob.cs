@@ -23,7 +23,7 @@ public class FaucetKnob : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(myBody.angularVelocity);
+        //Debug.Log(myBody.angularVelocity);
         /*if (Input.GetKeyDown(KeyCode.Q))
         {
             myBody.AddForce(Vector2.up * spinPower);
