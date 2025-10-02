@@ -1,5 +1,4 @@
 using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class FaucetKnob : MonoBehaviour
@@ -13,6 +12,8 @@ public class FaucetKnob : MonoBehaviour
 
     Vector3 defaultPosition;
     Quaternion defaultRotation;
+    [SerializeField]
+    string rotatingDirection = "none";
     void Start()
     {
         myBody = gameObject.GetComponent<Rigidbody2D>();
@@ -22,12 +23,43 @@ public class FaucetKnob : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log(gameObject.transform. .z);
-        if (myBody.angularVelocity < stoppingAngularVelocity)
+        Debug.Log(myBody.angularVelocity);
+        /*if (Input.GetKeyDown(KeyCode.Q))
         {
-            gameObject.transform.rotation = defaultRotation;
-            gameObject.transform.position = defaultPosition;
+            myBody.AddForce(Vector2.up * spinPower);
         }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            myBody.AddForce(Vector2.down * spinPower);
+        }*/
+        if (myBody.angularVelocity >0) {
+            rotatingDirection = "Up";
+        }
+        if (myBody.angularVelocity <0) {
+            rotatingDirection = "Down";
+        }
+        //Debug.Log(gameObject.transform. .z);
+        if (rotatingDirection == "Up")
+        {
+            if (myBody.angularVelocity < stoppingAngularVelocity)
+            {
+
+                rotatingDirection = "None";
+                gameObject.transform.rotation = defaultRotation;
+                gameObject.transform.position = defaultPosition;
+                myBody.angularVelocity = 0;
+            }
+        }
+        if (rotatingDirection == "Down") {
+            if (myBody.angularVelocity > -stoppingAngularVelocity)
+            {
+                rotatingDirection = "None";
+                gameObject.transform.rotation = defaultRotation;
+                gameObject.transform.position = defaultPosition;
+                myBody.angularVelocity = 0;
+            }
+        }
+
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -36,11 +68,18 @@ public class FaucetKnob : MonoBehaviour
         {
             if (collision.gameObject.transform.position.y > transform.position.y)
             {
-                myBody.AddForce(Vector3.down * spinPower);
+                gameObject.transform.rotation = defaultRotation;
+                gameObject.transform.position = defaultPosition;
+                myBody.angularVelocity = 0;
+                myBody.AddForce(Vector3.up * spinPower);
             }
             else
             {
-                myBody.AddForce(Vector3.down * spinPower);
+                rotatingDirection = "None";
+                gameObject.transform.rotation = defaultRotation;
+                gameObject.transform.position = defaultPosition;
+                myBody.angularVelocity = 0;
+                myBody.AddForce(Vector3.up * spinPower);
             }
         }
     }
