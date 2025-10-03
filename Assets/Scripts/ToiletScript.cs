@@ -9,9 +9,19 @@ public class ToiletScript : MonoBehaviour
     [SerializeField]
     Transform ballPoint;
     GameManager gameManager;
+    [SerializeField]
+
+    float rotationAmount;
+    float flushTimerCount;
+    [SerializeField]
+    float flushTimerMax;
 
     bool plunged = false;
+    [SerializeField]
+    AudioClip toiletFlushAudio;
     bool full = false;
+
+    bool flushing = false;
     void Start()
     {
         gameManager = GameObject.FindFirstObjectByType<GameManager>();
@@ -27,24 +37,64 @@ public class ToiletScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ball") && !full)
         {
+            GameObject.FindFirstObjectByType<GameManager>().AddScore(500);
             full = true;
             ballInToilet = collision.transform.gameObject;
+            ballInToilet.transform.parent = gameObject.transform.parent;
             ballInToilet.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             ballInToilet.GetComponent<PinballBall>().enabled = false;
             ballInToilet.GetComponent<CircleCollider2D>().enabled = false;
             ballInToilet.transform.position = ballPoint.position;
             gameManager.BallInToilet();
+            
         }
         if (collision.gameObject.CompareTag("Ball") && plunged)
         {
-            gameManager.FlushToilet();
+            //StartCoroutine(Flush());
+            //flushing = true;
+            //gameManager.FlushToilet();
         }
     }
     public void PlungeToilet()
     {
-        StartCoroutine(Shake(.25f, .2f));
+        Debug.Log("testeest");
         plunged = true;
     }
+
+    public void FlushFlush()
+    {
+        
+        if (full && plunged && !flushing)
+        {
+            StartCoroutine(Flush());
+            flushing = true;
+            gameManager.FlushToilet();
+        }
+    }
+
+    public IEnumerator Flush()
+    {
+        flushing = true;
+        GetComponent<AudioSource>().PlayOneShot(toiletFlushAudio);
+        float elapsedTime = 0f;
+        //StartCoroutine(Shake(flushTimerMax, .2f));
+        while (elapsedTime < flushTimerMax)
+        {
+
+            ballInToilet.transform.Rotate(0f, 0, rotationAmount);
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+
+        }
+        gameManager.FlushToilet();
+        plunged = false;
+        full = false;
+        flushing = false;
+        Destroy(ballInToilet);
+        Debug.Log("2");
+    }
+
     
     public IEnumerator Shake(float duration, float magnitude)
     {

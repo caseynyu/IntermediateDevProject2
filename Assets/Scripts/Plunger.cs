@@ -4,6 +4,8 @@ public class Plunger : MonoBehaviour
 {
     ToiletScript toilet;
 
+
+    AudioClip plungeAudio;
     void Start()
     {
         toilet = GameObject.FindFirstObjectByType<ToiletScript>();
@@ -19,7 +21,9 @@ public class Plunger : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ball") && !gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Plunging"))
         {
+            GameObject.FindFirstObjectByType<GameManager>().AddScore(400);
             gameObject.GetComponent<Animator>().SetTrigger("Plunging");
+            GetComponent<AudioSource>().PlayOneShot(plungeAudio);
         }
     }
 

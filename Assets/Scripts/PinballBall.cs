@@ -19,6 +19,12 @@ public class PinballBall : MonoBehaviour
     float fallMultiplier = 2.5f;
 
     PinballCamera pinballCamera;
+    [SerializeField]
+    AudioClip normalPing;
+    [SerializeField]
+    AudioClip bigPing;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -53,9 +59,12 @@ public class PinballBall : MonoBehaviour
                 break;
             case "Bounce":
                 StartCoroutine(pinballCamera.Shake(0.2f, .2f));
+                GetComponent<AudioSource>().PlayOneShot(normalPing);
                 break;
             case "Big Bounce":
                 StartCoroutine(pinballCamera.Shake(0.3f, .3f));
+                GameObject.FindFirstObjectByType<GameManager>().AddScore(100);
+                GetComponent<AudioSource>().PlayOneShot(bigPing);
                 break;
         }
     }
@@ -77,7 +86,7 @@ public class PinballBall : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D col)
     {
-        Debug.Log("test");
+        //Debug.Log("test");
         if (col.gameObject.tag == "Launcher")
         {
             myBody.AddForce(Vector3.up * launchSpeed, ForceMode2D.Impulse);

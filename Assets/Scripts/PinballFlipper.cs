@@ -6,7 +6,7 @@ public class PinballFlipper : MonoBehaviour
     KeyCode flipKey;
     [SerializeField]
     Rigidbody2D myBody;
-    
+
     HingeJoint2D myHingeJoint;
     JointMotor2D myJointMotor;
 
@@ -14,9 +14,19 @@ public class PinballFlipper : MonoBehaviour
     float flipPowerForward;
     [SerializeField]
     float flipPowerBack;
+    [SerializeField]
+    Sprite noToothpasteSprite;
+    [SerializeField]
+    Sprite ToothpasteSprite;
+
+    [SerializeField]
+    float toothpasteLaunchSpeed;
+
+    bool toothpasteOn = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        GetComponent<SpriteRenderer>().sprite = noToothpasteSprite;
         myHingeJoint = gameObject.GetComponent<HingeJoint2D>();
         myJointMotor = myHingeJoint.motor;
     }
@@ -29,9 +39,28 @@ public class PinballFlipper : MonoBehaviour
             myJointMotor.motorSpeed = -flipPowerForward;
             myHingeJoint.motor = myJointMotor;
         }
-        if (!Input.GetKey(flipKey)){
+        if (!Input.GetKey(flipKey))
+        {
             myJointMotor.motorSpeed = flipPowerBack;
             myHingeJoint.motor = myJointMotor;
         }
     }
+
+    public void ToothpasteFall()
+    {
+        GetComponent<SpriteRenderer>().sprite = ToothpasteSprite;
+        toothpasteOn = true;
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ball") && toothpasteOn)
+        {
+            toothpasteOn = false;
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * toothpasteLaunchSpeed, ForceMode2D.Impulse);
+            GetComponent<SpriteRenderer>().sprite = noToothpasteSprite;
+            GameObject.FindFirstObjectByType<GameManager>().AddScore(300);
+        }
+    }
+
 }

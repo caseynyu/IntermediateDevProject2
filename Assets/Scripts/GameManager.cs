@@ -1,7 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 public class GameManager : MonoBehaviour
 {
+    [SerializeField]
+    TMP_Text scoreText;
+    int score = 0;
     [SerializeField]
     GameObject ballPrefab;
     [SerializeField]
@@ -10,10 +14,13 @@ public class GameManager : MonoBehaviour
     GameObject ballInToilet = null;
     PinballCamera pinballCamera;
 
+    [SerializeField]
+    AudioClip coinNoise;
     float flushTimerCount;
     float flushTimerMax;
     void Start()
     {
+        scoreText.text = "Score: " + score.ToString();
         ballInPlay = GameObject.FindFirstObjectByType<PinballBall>().gameObject;
         pinballCamera = GameObject.FindFirstObjectByType<PinballCamera>();
     }
@@ -31,13 +38,15 @@ public class GameManager : MonoBehaviour
             ballInToilet = ballInPlay;
             ballInPlay = Instantiate(ballPrefab, ballStartPosition.position, ballStartPosition.rotation);
             pinballCamera.ballTransform = ballInPlay.transform;
+            AddScore(1000);
         }
     }
 
     public void FlushToilet()
     {
-        Destroy(ballInToilet);
+        //
         ballInToilet = null;
+        AddScore(10000);
     }
 
 
@@ -51,5 +60,13 @@ public class GameManager : MonoBehaviour
             //set the ball's position to its original position
             //ballObj.transform.position = ballStartPos;
         }
+    }
+
+    public void AddScore(int scoreToAdd)
+    {
+        GetComponent<AudioSource>().PlayOneShot(coinNoise);
+        score += scoreToAdd;
+        scoreText.text = "Score: " + score.ToString();
+
     }
 }

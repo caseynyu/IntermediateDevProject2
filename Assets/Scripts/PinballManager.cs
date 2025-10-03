@@ -18,8 +18,4 @@ public class PinballManager : MonoBehaviour
 
     }
 
-    public void AddScore()
-    {
-        
-    }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 public class FaucetKnob : MonoBehaviour
 {
 
+    [SerializeField]
+    AudioClip sound;
     Rigidbody2D myBody;
     [SerializeField]
     float spinPower;
@@ -66,6 +68,8 @@ public class FaucetKnob : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ball")
         {
+            GetComponent<AudioSource>().PlayOneShot(sound);
+            GameObject.FindFirstObjectByType<GameManager>().AddScore(400);
             if (collision.gameObject.transform.position.y > transform.position.y)
             {
                 gameObject.transform.rotation = defaultRotation;
