@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     GameObject ballInPlay;
     GameObject ballInToilet = null;
     PinballCamera pinballCamera;
+
+    float flushTimerCount;
+    float flushTimerMax;
     void Start()
     {
         ballInPlay = GameObject.FindFirstObjectByType<PinballBall>().gameObject;
@@ -36,6 +39,8 @@ public class GameManager : MonoBehaviour
         Destroy(ballInToilet);
         ballInToilet = null;
     }
+
+
 
     void OnTriggerEnter2D(Collider2D collision)
     {
